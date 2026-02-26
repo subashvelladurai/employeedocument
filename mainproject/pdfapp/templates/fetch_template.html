@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Documents</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #f4f6fb;
+      padding: 32px;
+      margin: 0;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #4f6fff;
+      color: white;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      text-align: center;
+    }
+    .btn:hover {
+      background: #3a57e8;
+    }
+  </style>
+</head>
+<body>
+  <h1>Documents</h1>
+  <div class="cards">
+    {% for doc in documents %}
+    <div class="card">
+      <h3>{{ doc.title }}</h3>
+      <p>{{ doc.description|truncatechars:150 }}</p>
+      <a href="{{ doc.pdf_url }}" target="_blank" rel="noopener noreferrer" class="btn">
+        Read More
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</body>
+</html>
